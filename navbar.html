@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat GPT Sidebar</title>
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for chat sidebar */
+        .chat-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: #0d6fd0;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+        }
+
+        .chat-sidebar.show {
+            right: 0;
+        }
+
+        .chat-sidebar .chat-content {
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chat-sidebar .chat-input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #d1d1d1;
+        }
+
+        .chat-sidebar .chat-input textarea {
+            width: 100%;
+            resize: none;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Chat GPT Sidebar Button -->
+        <button id="chatSidebarToggle" class="btn btn-primary m-3">Open Chat</button>
+
+        <!-- Chat GPT Sidebar -->
+        <div id="chatSidebar" class="chat-sidebar">
+            <div class="chat-content">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <div class="chat-input">
+                <textarea id="chatInput" placeholder="Type your message..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript (and Popper.js for dropdowns) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle the chat sidebar when the button is clicked
+        document.getElementById('chatSidebarToggle').addEventListener('click', function () {
+            document.getElementById('chatSidebar').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

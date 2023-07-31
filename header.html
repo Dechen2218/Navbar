@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Left Side Nav Bar</title>
+  <!-- Bootstrap CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.25.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+  <style>
+    /* Custom styles for the side nav bar */
+    body {
+      overflow-x: hidden; /* Prevent horizontal scrollbar */
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #333; 
+      padding: 20px;
+      transition: all 0.3s;
+      z-index: 9999;
+    }
+
+    #sidebar.active {
+      margin-left: -250px;
+    }
+
+    #content {
+      transition: all 0.3s;
+    }
+
+    #content.active {
+      margin-left: 0;
+    }
+
+    .list-unstyled li{
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+padding: 20px;
+
+    }
+
+    .text-white{
+        text-decoration: none;
+        color: #fff;
+    }
+    /* Style for the sidebar toggle button on small screens */
+    #sidebarCollapse {
+      display: none;
+    }
+
+
+    .search-container {
+  display: flex;
+  align-items: center;
+  max-width: 500px;
+  padding: 500px;
+}
+
+#search-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#search-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #45a049;
+}
+
+    @media (max-width: 768px) {
+      #sidebar {
+        margin-left: -250px;
+      }
+
+      #sidebar.active {
+        margin-left: 0;
+      }
+
+      #content.active {
+        margin-left: 0;
+      }
+
+      /* Show the sidebar toggle button on small screens */
+      #sidebarCollapse {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Side Nav Bar -->
+  <nav id="sidebar">
+    <div class="d-flex flex-column">
+      <!-- Your logo or brand -->
+      <a href="#" class="mb-4 text-decoration-none text-white">Your Brand</a>
+      <div class="list-unstyled d-flex justify-content-between">
+        <li><button type="button" class="btn btn-primary btn-lg" style="height: 50px;"><i class="bi bi-plus"></i>New Chat</button></li>
+   
+
+        <li> <a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-chat"></i><span></span>Chat
+          </a></li>
+         
+       
+        <!-- Documentation icon -->
+       <li>
+        <a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-file-earmark-text"></i> Documentation
+          </a>
+       </li>
+          
+        <!-- </li> -->
+        <!-- Support icon -->
+        <li><a href="#" class="text-white text-decoration-none">
+            <i class="bi bi-question-circle"></i> Support
+          </a></li>
+        
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page content -->
+  <div id="content" class="container mt-4">
+    <button type="button" id="sidebarCollapse" class="btn btn-dark d-block d-md-none">
+      <i class="bi bi-list"></i> Toggle Side Nav
+    </button>
+    <!-- <h1>Content Goes Here</h1> -->
+    <!-- <p>This is the main content of your page.</p> -->
+  </div>
+
+  <div class="container main-conatiner p-5" style="background-color: blue; height: 100vh;" >
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Enter your search term...">
+        <button id="search-button" onclick="performSearch()">Search</button>
+      </div>
+
+  </div>
+
+  <!-- Bootstrap JS (Optional if you don't need any JS interactions) -->
+  
+  <script>
+    // Toggle the side nav bar on small screens
+    document.getElementById('sidebarCollapse').addEventListener('click', function () {
+      document.getElementById('sidebar').classList.toggle('active');
+      document.getElementById('content').classList.toggle('active');
+    });
+  </script>
+</body>
+
+</html>
